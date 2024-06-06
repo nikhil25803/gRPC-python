@@ -16,6 +16,11 @@ service Greeter {
     rpc InteractingHello (stream HelloRequest) returns (stream HelloReply) {}
 }
 
-message HelloRequest {}
-message HelloReply {}
+message HelloRequest {
+    string greeting = 1;
+    string name = 1;
+}
+message HelloReply {
+    string reply = 1;
+}
 message DelayedReply {}
