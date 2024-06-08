@@ -18,9 +18,9 @@ service Greeter {
 
 message HelloRequest {
     string greeting = 1;
-    string name = 1;
+    string name = 2;
 }
 message HelloReply {
-    string reply = 1;
+    string message = 1;
 }
 message DelayedReply {}

@@ -3,7 +3,6 @@
 # source: greet.proto
 # Protobuf Python Version: 5.26.1
 """Generated protocol buffer code."""
-
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import symbol_database as _symbol_database
@@ -13,21 +12,21 @@ from google.protobuf.internal import builder as _builder
 _sym_db = _symbol_database.Default()
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(
-    b'\n\x0bgreet.proto\x12\x05greet"\x0e\n\x0cHelloRequest"\x0c\n\nHelloReply"\x0e\n\x0c\x44\x65layedReply2\x85\x02\n\x07Greeter\x12\x34\n\x08SayHello\x12\x13.greet.HelloRequest\x1a\x11.greet.HelloReply"\x00\x12;\n\x0fParrotSaysHello\x12\x13.greet.HelloRequest\x1a\x11.greet.HelloReply"\x00\x12\x45\n\x15\x43hattyClientSaysHello\x12\x13.greet.HelloRequest\x1a\x13.greet.DelayedReply"\x00(\x01\x12@\n\x10InteractingHello\x12\x13.greet.HelloRequest\x1a\x11.greet.HelloReply"\x00(\x01\x30\x01\x62\x06proto3'
-)
+
+
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0bgreet.proto\x12\x05greet\".\n\x0cHelloRequest\x12\x10\n\x08greeting\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\"\x1d\n\nHelloReply\x12\x0f\n\x07message\x18\x01 \x01(\t\"\x0e\n\x0c\x44\x65layedReply2\x85\x02\n\x07Greeter\x12\x34\n\x08SayHello\x12\x13.greet.HelloRequest\x1a\x11.greet.HelloReply\"\x00\x12;\n\x0fParrotSaysHello\x12\x13.greet.HelloRequest\x1a\x11.greet.HelloReply\"\x00\x12\x45\n\x15\x43hattyClientSaysHello\x12\x13.greet.HelloRequest\x1a\x13.greet.DelayedReply\"\x00(\x01\x12@\n\x10InteractingHello\x12\x13.greet.HelloRequest\x1a\x11.greet.HelloReply\"\x00(\x01\x30\x01\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
-_builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, "greet_pb2", _globals)
+_builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'greet_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
-    DESCRIPTOR._loaded_options = None
-    _globals["_HELLOREQUEST"]._serialized_start = 22
-    _globals["_HELLOREQUEST"]._serialized_end = 36
-    _globals["_HELLOREPLY"]._serialized_start = 38
-    _globals["_HELLOREPLY"]._serialized_end = 50
-    _globals["_DELAYEDREPLY"]._serialized_start = 52
-    _globals["_DELAYEDREPLY"]._serialized_end = 66
-    _globals["_GREETER"]._serialized_start = 69
-    _globals["_GREETER"]._serialized_end = 330
+  DESCRIPTOR._loaded_options = None
+  _globals['_HELLOREQUEST']._serialized_start=22
+  _globals['_HELLOREQUEST']._serialized_end=68
+  _globals['_HELLOREPLY']._serialized_start=70
+  _globals['_HELLOREPLY']._serialized_end=99
+  _globals['_DELAYEDREPLY']._serialized_start=101
+  _globals['_DELAYEDREPLY']._serialized_end=115
+  _globals['_GREETER']._serialized_start=118
+  _globals['_GREETER']._serialized_end=379
 # @@protoc_insertion_point(module_scope)

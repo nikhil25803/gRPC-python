@@ -5,8 +5,6 @@ import greet_pb2_grpc
 
 
 def run():
-    with grpc.insecure_channel("localhost:50051") as channel:
-        stub = greet_pb2_grpc.GreeterStub(channel)
 
     print(
         """-- Welcome to gRPC application ---
@@ -22,7 +20,7 @@ def run():
     if rpc_call == "1":
         hello_request = greet_pb2.HelloRequest(greeting="Namaste!", name="gRPC")
         hello_reply = stub.SayHello(hello_request)
-        print("Unary Call SayHello Responded: \n", hello_reply)
+        print("Unary Call Made.\nSayHello Responded: \n", hello_reply)
 
     elif rpc_call == "2":
         print("Server Side Streaming")
@@ -36,5 +34,7 @@ def run():
 
 
 if __name__ == "__main__":
-    while True:
-        run()
+    with grpc.insecure_channel("localhost:50051") as channel:
+        stub = greet_pb2_grpc.GreeterStub(channel)
+        while True:
+            run()
