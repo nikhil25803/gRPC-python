@@ -23,4 +23,7 @@ message HelloRequest {
 message HelloReply {
     string message = 1;
 }
-message DelayedReply {}
+message DelayedReply {
+    string message = 1;
+    repeated HelloRequest request = 2;
+}

@@ -4,6 +4,22 @@ import greet_pb2
 import greet_pb2_grpc
 
 
+def get_client_requests_stream():
+    """
+    Function that yeild different requests because multiple requests are to be made
+    to the server before the client gets final response from the sever.
+    """
+    while True:
+        name = input("Please enter a name (leave blank to stop chat): ")
+
+        if name == "":
+            break
+
+        hello_request = greet_pb2.HelloRequest(greeting="Hello", name=name)
+        yield hello_request
+        time.sleep(1)
+
+
 def run():
 
     print(
@@ -26,11 +42,14 @@ def run():
         hello_request = greet_pb2.HelloRequest(greeting="Namaste!", name="gRPC")
         hello_replies = stub.ParrotSaysHello(hello_request)
         for hello_reply in hello_replies:
-            print("ParrotSaysHello Response  Receivced: ")
+            print("Server Side Stream Response  Received: ")
             print(hello_reply)
 
     elif rpc_call == "3":
-        print("Client Side Streaming")
+        delayed_reply = stub.ChattyClientSaysHello(get_client_requests_stream())
+        print("Client Side Stream Response Received: ")
+        print(delayed_reply)
+
     elif rpc_call == "4":
         print("Binary Streaming")
     else:
