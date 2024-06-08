@@ -1,26 +1,30 @@
 # gRPC Implementation in Python
 
-A demo gRPC based client-server application with implementation of different types of gRPC calls.
+A demo gRPC-based client-server application showcasing different types of gRPC calls.
 
-## gRPC?
+## What is gRPC?
 
-gRPC is a Google-created, open source, schema-first **Remote Procedure Call** framework that takes advantage of the _HTTP/2_ protocol to transport messages in binary. These messages are serialized and deserialized using Protocol Buffers, which are a type of **Interface Definition Language (IDL).**
+gRPC is an open-source framework created by Google for remote procedure calls (RPC). It uses the HTTP/2 protocol to send messages in binary format. These messages are serialized and deserialized using Protocol Buffers to define data structures and services.
 
-## Different types of gRPC calls.
+## Types of gRPC Calls
+
+![image](https://github.com/nikhil25803/gRPC-python/assets/93156825/ec831a07-c5c7-418f-abf6-987475669a0d)
+
 
 1. **Unary**
 
-   - The client initiates the remote procedure call with the method name, metadata, and the request message. Then the server returns the response with the gRPC status, the response message, and metadata.
+   - The client sends a single request to the server and receives a single response.
 
 2. **Server Streaming**
 
-   - The client initiates the remote procedure call with the method name, metadata, and the request message. Then it receives a streaming response from the server. The request’s status is sent to the client at the end of the streaming response (all data has been transmitted to the client along with its metadata)
+   - The client sends a single request to the server and receives a stream of responses. The server sends multiple responses and finishes with a status message once all responses are sent.
 
 3. **Client Streaming**
 
-   - The client initiates the remote procedure call with the method name and metadata. Then the client sends streaming messages. However, the server can send the request status code and metadata before sending the client’s messages. If a problem occurs on the server and it has already sent the status and metadata, detecting errors is difficult.
+   - The client sends a stream of requests to the server. Once the client has finished sending messages, the server processes these requests and sends back a single response.
 
 4. **Bi-Directional Streaming**
-   - Each party sends its messages by streaming, and this can be done in parallel, which means there is no order in which client/server messages are sent and received. The client initiates the remote procedure call with the method name and metadata. Then the server can respond to it immediately by returning the status and its metadata (or when the client has finished sending all of its messages)
+
+   - Both the client and server send streams of messages to each other. This happens parallel, meaning messages can be sent and received in any order.
 
 ---
