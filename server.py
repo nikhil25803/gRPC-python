@@ -46,7 +46,17 @@ class GreeterService(greet_pb2_grpc.GreeterServicer):
         """
         Bi-directional Streaming
         """
-        return super().InteractingHello(request_iterator, context)
+        print("Bi-directional Stream Request Made")
+        for request in request_iterator:
+            print("Request Made: ")
+            print(request)
+            print(f"What is score of the user {request.name} in Maths?")
+            marks = input("Score: ")
+            hello_reply = greet_pb2.HelloReply(
+                message=f"{request.greeting} {request.name}, you have received: {marks} marks in Mathematics."
+            )
+
+            yield hello_reply
 
 
 def server():

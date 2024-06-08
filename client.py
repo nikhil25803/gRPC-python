@@ -51,7 +51,12 @@ def run():
         print(delayed_reply)
 
     elif rpc_call == "4":
-        print("Binary Streaming")
+        responses = stub.InteractingHello(get_client_requests_stream())
+
+        for response in responses:
+            print("Binary Streaming Response Received: ")
+            print(response)
+            
     else:
         print("Invalid Option")
         return False
