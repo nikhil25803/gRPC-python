@@ -44,7 +44,7 @@ class GreeterStub(object):
                 request_serializer=greet__pb2.HelloRequest.SerializeToString,
                 response_deserializer=greet__pb2.HelloReply.FromString,
                 _registered_method=True)
-        self.ParrotSaysHello = channel.unary_unary(
+        self.ParrotSaysHello = channel.unary_stream(
                 '/greet.Greeter/ParrotSaysHello',
                 request_serializer=greet__pb2.HelloRequest.SerializeToString,
                 response_deserializer=greet__pb2.HelloReply.FromString,
@@ -100,7 +100,7 @@ def add_GreeterServicer_to_server(servicer, server):
                     request_deserializer=greet__pb2.HelloRequest.FromString,
                     response_serializer=greet__pb2.HelloReply.SerializeToString,
             ),
-            'ParrotSaysHello': grpc.unary_unary_rpc_method_handler(
+            'ParrotSaysHello': grpc.unary_stream_rpc_method_handler(
                     servicer.ParrotSaysHello,
                     request_deserializer=greet__pb2.HelloRequest.FromString,
                     response_serializer=greet__pb2.HelloReply.SerializeToString,
@@ -164,7 +164,7 @@ class Greeter(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(
+        return grpc.experimental.unary_stream(
             request,
             target,
             '/greet.Greeter/ParrotSaysHello',

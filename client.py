@@ -23,7 +23,12 @@ def run():
         print("Unary Call Made.\nSayHello Responded: \n", hello_reply)
 
     elif rpc_call == "2":
-        print("Server Side Streaming")
+        hello_request = greet_pb2.HelloRequest(greeting="Namaste!", name="gRPC")
+        hello_replies = stub.ParrotSaysHello(hello_request)
+        for hello_reply in hello_replies:
+            print("ParrotSaysHello Response  Receivced: ")
+            print(hello_reply)
+
     elif rpc_call == "3":
         print("Client Side Streaming")
     elif rpc_call == "4":

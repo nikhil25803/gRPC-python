@@ -7,18 +7,38 @@ import greet_pb2_grpc
 
 class GreeterService(greet_pb2_grpc.GreeterServicer):
     def SayHello(self, request, context):
-        print("Say Hello Request Made: ")
-        print("Request: \n", request)
+        """
+        Unary Method
+        """
+        print("Unary Request Made")
+        print("Request:\n", request)
         hello_reply = greet_pb2.HelloReply(message=f"{request.greeting} {request.name}")
         return hello_reply
 
     def ParrotSaysHello(self, request, context):
-        return super().ParrotSaysHello(request, context)
+        """
+        Server Side Streaming
+        """
+        print("Server Side Stream Request Made")
+        print("Request:\n", request)
+
+        for i in range(3):
+            hello_reply = greet_pb2.HelloReply(
+                message=f"{request.greeting} {request.name} {i+1}"
+            )
+            yield hello_reply
+            time.sleep(2)
 
     def ChattyClientSaysHello(self, request_iterator, context):
+        """
+        Client Side Streaming
+        """
         return super().ChattyClientSaysHello(request_iterator, context)
 
     def InteractingHello(self, request_iterator, context):
+        """
+        Bi-directional Streaming
+        """
         return super().InteractingHello(request_iterator, context)
 
 
